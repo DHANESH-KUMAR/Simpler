@@ -1,0 +1,20 @@
+{
+  "name": "simpler",
+  "version": "1.0.0",
+  "description": "This app based on javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DHANESH-KUMAR/Simpler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DHANESH-KUMAR/Simpler/issues"
+  },
+  "homepage": "https://github.com/DHANESH-KUMAR/Simpler#readme"
+}
