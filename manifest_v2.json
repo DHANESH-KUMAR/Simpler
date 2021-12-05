@@ -1,0 +1,37 @@
+{
+    "manifest_version": 2,
+    "name": "Simpler",
+    "description": "this extension help us user to configure his webpage",
+    "version": "1.0.0",
+    "icons": {
+        "128": "assets/icons/icon128.png",
+        "48": "assets/icons/icon48.png",
+        "32": "assets/icons/icon32.png",
+        "16": "assets/icons/icon16.png"
+    },
+    "page_action": {
+        "default_icon":"assets/icons/icon16.png",
+        "default_title": "The Simpler",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://delhiexcise.gov.in/*"
+            ],
+            "js": [
+                "scripts/content.js",
+                "assets/js/jquery-3.6.0.min.js"
+            ],
+            "css": [
+                "assets/css/content.css"
+            ]
+        }
+    ],
+    "background": {
+        "scripts":["scripts/background.js"],
+        "persistent":false
+    },
+    "permissions":["tts","tabs","https://delhiexcise.gov.in/*"]
+    
+}

@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Simpler",
     "description": "this extension help us user to configure his webpage",
     "version": "1.0.0",
@@ -9,29 +9,38 @@
         "32": "assets/icons/icon32.png",
         "16": "assets/icons/icon16.png"
     },
-    "page_action": {
-        "default_icon":"assets/icons/icon16.png",
+    "action": {
+        "default_icon": {
+            "128": "assets/icons/icon128.png",
+            "48": "assets/icons/icon48.png",
+            "32": "assets/icons/icon32.png",
+            "16": "assets/icons/icon16.png"
+        },
         "default_title": "The Simpler",
         "default_popup": "popup.html"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://delhiexcise.gov.in/*"
-            ],
-            "js": [
-                "scripts/content.js",
-                "assets/js/jquery-3.6.0.min.js"
-            ],
-            "css": [
-                "assets/css/content.css"
-            ]
-        }
-    ],
+    "content_scripts": [{
+        "matches": [
+            "https://delhiexcise.gov.in/*"
+        ],
+        "all_frames": true,
+        "js": [
+            "scripts/content.js",
+            "assets/js/jquery-3.6.0.min.js"
+        ],
+        "css": [
+            "assets/css/content.css"
+        ]
+    }],
     "background": {
-        "scripts":["scripts/background.js"],
-        "persistent":false
+        "service_worker": "scripts/background.js"
     },
-    "permissions":["tts","tabs","https://delhiexcise.gov.in/*"]
-    
+    "permissions": [
+        "tts",
+        "tabs",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://delhiexcise.gov.in/*"
+    ]
 }

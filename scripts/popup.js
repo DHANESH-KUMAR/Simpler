@@ -1,26 +1,22 @@
-$(document).ready(function () {
-  var btnCallPageFunction = $("#btnCallPageFunction");
-  var fileControl = $("#file1");
-  var btnParseExcelResponse = $("#btnParseExcelResponse");
+window.onload = function() {
+    console.log("when load")
+    let callPageFunction = document.getElementById("btnCallPageFunction");
 
-  btnCallPageFunction.click(function (e) {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      let tab_id = tabs[0].id;
-      chrome.tabs.sendMessage(
-        tab_id,
-        {
-          message: "START_FETCHING_DATA",
-        },
-        function (response) {
-          console.log(response);
-        }
-      );
+    callPageFunction.addEventListener("click", function() {
+        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            chrome.scripting.executeScript({
+                target: { tabId: tabs[0].id },
+                fun: changeBodyColor
+            }, function(resp) {
+                console.log(resp);
+            })
+        });
+
+
     });
-  });
-});
 
-document.addEventListener('DHANESH',function(e){
-  debugger
-  var data=e.details;
-  console.log(data);
-});
+    function changeBodyColor() {
+        console.log('change body color is called')
+        document.body.style.backgroundColor = "skyblue";
+    }
+}
